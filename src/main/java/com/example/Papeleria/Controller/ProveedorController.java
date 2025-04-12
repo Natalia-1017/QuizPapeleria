@@ -33,4 +33,9 @@ public class ProveedorController {
     public Proveedor buscar(@PathVariable Integer id) {
         return proveedorService.buscarPorId(id);
     }
+    @GetMapping("/{idProveedor}/productos")
+    public List<Object[]> listarProductosPorProveedor(@PathVariable Integer idProveedor) {
+        return proveedorService.listarProductosPorProveedor(idProveedor);
+    }
+
 }

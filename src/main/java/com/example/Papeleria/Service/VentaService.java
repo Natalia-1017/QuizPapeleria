@@ -12,29 +12,31 @@ import java.util.List;
 public class VentaService {
 
     @Autowired
-    private VentaRepository repository;
+    private VentaRepository ventaRepository;
 
     public List<Venta> listar() {
-        return repository.findAll();
+        return ventaRepository.findAll();
     }
 
     public Venta guardar(Venta venta) {
-        return repository.save(venta);
+        return ventaRepository.save(venta);
     }
 
     public void eliminar(Integer id) {
-        repository.deleteById(id);
+        ventaRepository.deleteById(id);
     }
 
     public Venta buscarPorId(Integer id) {
-        return repository.findById(id).orElse(null);
+        return ventaRepository.findById(id).orElse(null);
     }
 
-    public List<Venta> listarPorEmpleado(Integer idEmpleado) {
-        return repository.findVentasByEmpleado(idEmpleado);
+
+    public List<Object[]> obtenerVentasPorEmpleado(Integer idEmpleado) {
+        return ventaRepository.findVentasByEmpleado(idEmpleado);
     }
 
-    public List<Venta> listarPorEmpleadoYFecha(Integer idEmpleado, LocalDate fecha) {
-        return repository.findVentasByEmpleadoAndFecha(idEmpleado, fecha);
+    public List<Object[]> obtenerVentasPorEmpleadoYFecha(Integer idEmpleado, LocalDate fecha) {
+        return ventaRepository.findVentasByEmpleadoAndFecha(idEmpleado, fecha);
     }
+
 }

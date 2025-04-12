@@ -28,4 +28,9 @@ public class ProveedorService {
     public Proveedor buscarPorId(Integer id) {
         return proveedorRepository.findById(id).orElse(null);
     }
+    public List<Object[]> listarProductosPorProveedor(Integer idProveedor) {
+        return proveedorRepository.findProductosByProveedor(idProveedor);
+    }
+
+
 }

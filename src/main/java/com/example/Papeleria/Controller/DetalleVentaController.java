@@ -35,8 +35,9 @@ public class DetalleVentaController {
     }
 
     // Consulta: Listar clientes con detalles de venta
-    @GetMapping("/clientes-detalles")
+    @GetMapping("/consulta/clientes-detalles")
     public List<Object[]> listarClientesConDetalles() {
         return service.listarClientesConDetalle();
     }
+
 }

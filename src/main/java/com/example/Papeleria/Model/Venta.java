@@ -1,5 +1,6 @@
 package com.example.Papeleria.Model;
 
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Venta {
     @ManyToOne
     @JoinColumn(name = "id_empleado")
     private Empleado empleado;
+
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<DetalleVenta> detalles;

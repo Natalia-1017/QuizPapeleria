@@ -33,4 +33,5 @@ public class ProductoController {
     public Producto buscar(@PathVariable Integer id) {
         return productoService.buscarPorId(id);
     }
+
 }

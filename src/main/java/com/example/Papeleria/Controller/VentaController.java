@@ -13,38 +13,37 @@ import java.util.List;
 public class VentaController {
 
     @Autowired
-    private VentaService service;
+    private VentaService ventaService;
 
     @GetMapping
     public List<Venta> listar() {
-        return service.listar();
+        return ventaService.listar();
     }
 
     @PostMapping
     public Venta guardar(@RequestBody Venta venta) {
-        return service.guardar(venta);
+        return ventaService.guardar(venta);
     }
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Integer id) {
-        service.eliminar(id);
+        ventaService.eliminar(id);
     }
 
     @GetMapping("/{id}")
     public Venta buscar(@PathVariable Integer id) {
-        return service.buscarPorId(id);
+        return ventaService.buscarPorId(id);
     }
 
-    // Ventas por empleado
     @GetMapping("/empleado/{idEmpleado}")
-    public List<Venta> listarPorEmpleado(@PathVariable Integer idEmpleado) {
-        return service.listarPorEmpleado(idEmpleado);
+    public List<Object[]> obtenerVentasPorEmpleado(@PathVariable Integer idEmpleado) {
+        return ventaService.obtenerVentasPorEmpleado(idEmpleado);
     }
 
-    // Ventas por empleado en una fecha específica
-    @GetMapping("/empleado/{idEmpleado}/fecha")
-    public List<Venta> listarPorEmpleadoYFecha(@PathVariable Integer idEmpleado, @RequestParam String fecha) {
-        LocalDate fechaParsed = LocalDate.parse(fecha);
-        return service.listarPorEmpleadoYFecha(idEmpleado, fechaParsed);
+
+    @GetMapping("/empleado/{idEmpleado}/fecha/{fecha}")
+    public List<Object[]> obtenerVentasPorEmpleadoYFecha(@PathVariable Integer idEmpleado,
+                                                         @PathVariable String fecha) {
+        return ventaService.obtenerVentasPorEmpleadoYFecha(idEmpleado, LocalDate.parse(fecha));
     }
 }
